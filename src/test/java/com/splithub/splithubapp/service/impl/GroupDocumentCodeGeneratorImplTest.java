@@ -1,7 +1,6 @@
 package com.splithub.splithubapp.service.impl;
 
 import com.splithub.splithubapp.mongodb.GroupRepository;
-import com.splithub.splithubapp.mongodb.document.Group;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -13,7 +12,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-class GroupCodeGeneratorImplTest {
+class GroupDocumentCodeGeneratorImplTest {
 
   @Mock private GroupRepository groupRepository;
 

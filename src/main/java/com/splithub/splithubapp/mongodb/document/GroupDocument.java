@@ -7,21 +7,25 @@ import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "groups")
-public class Group {
+public class GroupDocument {
 
   @Id private String id;
-  private String name;
-  private String photoUrl;
-  private String currency;
-  private Instant createdAt;
-  private String groupCode;
-  private List<String> connectedUserIds;
-  private BigDecimal expensesTotal;
-  private List<Participant> participants;
+  @Field("name") private String name;
+  @Field("photoUrl") private String photoUrl;
+  @Field("currency") private String currency;
+  @Field("createdAt") private Instant createdAt;
+  @Field("groupCode") private String groupCode;
+  @Field("userIds") private List<String> userIds;
+  @Field("expensesTotal") private BigDecimal expensesTotal;
+  @Field("participants") private List<Participant> participants;
 
-  public Group(
+  public GroupDocument() {
+  }
+
+  public GroupDocument(
       String name,
       String currency,
       String groupCode,
@@ -33,7 +37,7 @@ public class Group {
     this.currency = currency;
     this.groupCode = groupCode;
     this.expensesTotal = BigDecimal.ZERO;
-    this.connectedUserIds = List.of(userId);
+    this.userIds = List.of(userId);
     this.participants = participants;
   }
 
@@ -85,12 +89,12 @@ public class Group {
     this.groupCode = groupCode;
   }
 
-  public List<String> connectedUserIds() {
-    return connectedUserIds;
+  public List<String> getUserIds() {
+    return userIds;
   }
 
-  public void setConnectedUserIds(List<String> connectedUserIds) {
-    this.connectedUserIds = connectedUserIds;
+  public void setUserIds(List<String> userIds) {
+    this.userIds = userIds;
   }
 
   public BigDecimal expensesTotal() {
